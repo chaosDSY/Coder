@@ -1,6 +1,9 @@
 package Excute;
 
+import com.ibm.wala.classLoader.ClassLoaderFactory;
+import com.ibm.wala.classLoader.Module;
 import com.ibm.wala.classLoader.ShrikeBTMethod;
+import com.ibm.wala.examples.drivers.ScopeFileCallGraph;
 import com.ibm.wala.ipa.callgraph.AnalysisScope;
 import com.ibm.wala.ipa.callgraph.CGNode;
 import com.ibm.wala.ipa.callgraph.CallGraph;
@@ -10,19 +13,31 @@ import com.ibm.wala.ipa.callgraph.impl.AllApplicationEntrypoints;
 import com.ibm.wala.ipa.cha.ClassHierarchy;
 import com.ibm.wala.ipa.cha.ClassHierarchyException;
 import com.ibm.wala.ipa.cha.ClassHierarchyFactory;
+import com.ibm.wala.types.ClassLoaderReference;
 import com.ibm.wala.util.CancelException;
 import com.ibm.wala.util.config.AnalysisScopeReader;
 import com.ibm.wala.util.io.FileProvider;
+import com.sun.jmx.remote.util.ClassLoaderWithRepository;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.jar.JarFile;
 
 public class Readme {
     public static void main(String args[]) throws ClassHierarchyException, IOException, CancelException {
         File exFile = new FileProvider().getFile("D:\\大三上\\自动化测试\\大作业\\经典大作业\\ClassicAutomatedTesting\\ClassicAutomatedTesting\\2-DataLog\\data\\change_info.txt");
-        AnalysisScope scope =
-            AnalysisScopeReader.readJavaScope("D:\\大三上\\自动化测试\\Coder\\Datalog.jar",exFile, ClassLoader.getSystemClassLoader());
+    //    AnalysisScope scope =
+    //        AnalysisScopeReader.makeJavaBinaryAnalysisScope(
+    //            "D:\\大三上\\自动化测试\\Coder\\Datalog.jar", null);
+    AnalysisScope scope =
+        AnalysisScopeReader.readJavaScope(
+            "D:\\大三上\\自动化测试\\Coder\\src\\main\\resources\\scope.txt",
+            new File("..\\resources\\exclusion.txt"),
+            ClassLoader.getSystemClassLoader());
 //        ClassHierarchy cha = ClassHierarchyFactory.make(scope);
+        scope.addToScope(
+                ClassLoaderReference.Application,
+                new JarFile("D:\\大三上\\自动化测试\\Coder\\Datalog.jar", false));
         Scope(scope);
     }
 
@@ -53,7 +68,7 @@ public class Readme {
                    System.out.println(classInnerName + " " + signature);
                }
            } else {
-               System.out.println(String.format("'%s'不是一个ShrikeBTMethod：%s",
+               System.out.println(String.format("'%s' 不是一个ShrikeBTMethod： %s",
                        node.getMethod(), node.getMethod().getClass()));
            }
        }
