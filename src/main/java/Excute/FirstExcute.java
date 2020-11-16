@@ -1,10 +1,8 @@
 package Excute;
 
 import com.ibm.wala.classLoader.Language;
-import com.ibm.wala.ipa.callgraph.AnalysisCacheImpl;
-import com.ibm.wala.ipa.callgraph.AnalysisOptions;
-import com.ibm.wala.ipa.callgraph.AnalysisScope;
-import com.ibm.wala.ipa.callgraph.Entrypoint;
+import com.ibm.wala.classLoader.ShrikeBTMethod;
+import com.ibm.wala.ipa.callgraph.*;
 import com.ibm.wala.ipa.callgraph.cha.CHACallGraph;
 import com.ibm.wala.ipa.callgraph.impl.AllApplicationEntrypoints;
 import com.ibm.wala.ipa.callgraph.impl.Util;
@@ -12,12 +10,13 @@ import com.ibm.wala.ipa.callgraph.propagation.SSAPropagationCallGraphBuilder;
 import com.ibm.wala.ipa.cha.ClassHierarchy;
 import com.ibm.wala.ipa.cha.ClassHierarchyException;
 import com.ibm.wala.ipa.cha.ClassHierarchyFactory;
+import com.ibm.wala.shrikeCT.InvalidClassFileException;
 import com.ibm.wala.types.ClassLoaderReference;
 import com.ibm.wala.util.CancelException;
 import com.ibm.wala.util.config.AnalysisScopeReader;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.jar.JarFile;
 
@@ -26,23 +25,7 @@ public class FirstExcute {
         Scanner input = new Scanner(System.in);
         System.out.println("please input your command: ");
         String command = input.nextLine();
-        String[] commandList = command.split(" ");
-        for (String s : commandList) {
-            System.out.print(s + ",");
-        }
-        return null;
-    }
-
-    public static AnalysisScope scopeBuild(String target, JarFile jar) throws IOException {
-        AnalysisScope scope =
-                AnalysisScopeReader.readJavaScope(
-                        "D:\\大三上\\自动化测试\\Coder\\src\\main\\resources\\scope.txt",
-                        new File("D:\\大三上\\自动化测试\\Coder\\src\\main\\resources\\exclusion.txt"),
-                        ClassLoader.getSystemClassLoader());
-//        ClassHierarchy cha = ClassHierarchyFactory.make(scope);
-        scope.addToScope(
-                ClassLoaderReference.Application, jar);
-        return scope;
+        return command.split(" ");
     }
 
     // 基于类
@@ -51,6 +34,22 @@ public class FirstExcute {
         Iterable<Entrypoint> eps = new AllApplicationEntrypoints(scope, cha);
         CHACallGraph cg = new CHACallGraph(cha);
         cg.init(eps);
+        for(CGNode node: cg) {
+           // node中包含了很多信息，包括类加载器、方法信息等，这里只筛选出需要的信息
+           if(node.getMethod() instanceof ShrikeBTMethod) {
+               // node.getMethod()返回一个比较泛化的IMethod实例，不能获取到我们想要的信息
+               // 一般地，本项目中所有和业务逻辑相关的方法都是ShrikeBTMethod对象
+               ShrikeBTMethod method = (ShrikeBTMethod) node.getMethod();
+               // 使用Primordial类加载器加载的类都属于Java原生类，我们一般不关心。
+               if("Application".equals(method.getDeclaringClass().getClassLoader().toString())) {
+                   // 获取声明该方法的类的内部表示
+                   String classInnerName = method.getDeclaringClass().getName().toString();
+                   // 获取方法签名
+                   String signature = method.getSignature();
+                   System.out.println(classInnerName + " " + signature);
+               }
+           }
+       }
     }
 
     // 基于方法
@@ -64,23 +63,51 @@ public class FirstExcute {
         );
     }
 
-    public static void main(String[] args) throws ClassHierarchyException, CancelException, IOException {
-        String[] commandList = getSystemInput();
-        assert commandList != null;
-        if(!commandList[0].equals("java") || !commandList[1].equals("-jar")){
-            System.out.println("The command is error!");
-            return;
+    // 读入txt文件
+    public static ArrayList<String> changeInfoRead(String change_info){
+        ArrayList<String> change_info_message = new ArrayList<>();
+        try (FileReader reader = new FileReader(change_info);
+             BufferedReader br = new BufferedReader(reader) // 建立一个对象，它把文件内容转成计算机能读懂的语言
+        ) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                change_info_message.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        String testSelection = commandList[2];
-        JarFile jar = new JarFile(testSelection, false);
-        String methods = commandList[3];
-        String project_target = commandList[4];
-        String change_info = commandList[5];
-        AnalysisScope scope = scopeBuild(project_target, jar);
-        if(methods.equals("-c")){
+        return change_info_message;
+    }
+
+    //输出到路径下文件
+    public static void writeFile(ArrayList<String> message,String outPutPath) {
+        try {
+            File writeName = new File(outPutPath);
+            writeName.createNewFile();
+            try (FileWriter writer = new FileWriter(writeName);
+                 BufferedWriter out = new BufferedWriter(writer)) {
+                for(String mes:message){
+                    out.write(mes+"\n");
+                }
+                out.flush(); // 把缓存区内容压入文件
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) throws ClassHierarchyException, CancelException, IOException, InvalidClassFileException {
+            String methods = "-c";
+            String project_target =
+                    "D:\\大三上\\自动化测试\\大作业\\经典大作业\\ClassicAutomatedTesting\\ClassicAutomatedTesting\\1-ALU\\target";
+            String change_info = "D:\\大三上\\自动化测试\\Coder\\change_info.txt";
+            AnalysisScope scope = scopeBuild.scopeBuild.buildScope(project_target);
             ExcuteC(scope);
-        }else if(methods.equals("-m")){
-            ExcuteM(scope);
-        }
+            ArrayList<String> mesg = changeInfoRead(
+            "D:\\大三上\\自动化测试\\大作业\\经典大作业\\ClassicAutomatedTesting\\ClassicAutomatedTesting\\1-ALU\\data\\change_info.txt");
+//        for(String msg:mesg){
+//            System.out.println(msg);
+//        }
+//        writeFile(mesg,"outPut.txt");
     }
 }
