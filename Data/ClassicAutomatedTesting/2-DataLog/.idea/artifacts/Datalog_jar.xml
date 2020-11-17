@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Datalog:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Datalog_jar</output-path>
+    <root id="archive" name="Datalog.jar">
+      <element id="module-output" name="Datalog" />
+    </root>
+  </artifact>
+</component>

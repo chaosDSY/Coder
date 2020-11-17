@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Nextday:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Nextday_jar</output-path>
+    <root id="archive" name="Nextday.jar">
+      <element id="module-output" name="Nextday" />
+    </root>
+  </artifact>
+</component>

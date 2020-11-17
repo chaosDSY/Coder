@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="MoreTriangle:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MoreTriangle_jar</output-path>
+    <root id="archive" name="MoreTriangle.jar">
+      <element id="module-output" name="MoreTriangle" />
+    </root>
+  </artifact>
+</component>
