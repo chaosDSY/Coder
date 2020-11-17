@@ -19,24 +19,40 @@ public class scopeBuild {
             "D:\\大三上\\自动化测试\\大作业\\经典大作业\\ClassicAutomatedTesting\\ClassicAutomatedTesting\\1-ALU\\target");
     }
 
+    /**
+     *
+     * @description : 创建分析域，向分析域中添加类文件
+     * @param target : 目标路径
+     * @return AnalysisScope
+     * @throws IOException
+     * @throws InvalidClassFileException
+     */
     public static AnalysisScope buildScope(String target) throws IOException, InvalidClassFileException {
-        ClassLoader javaLoader;
-        AnalysisScope scope =
-                AnalysisScopeReader.readJavaScope(
-                        "D:\\大三上\\自动化测试\\Coder\\src\\main\\resources\\scope.txt",
-                        new File("..\\resources\\exclusion.txt"),
-                        null);
-//        scope.addToScope(ClassLoaderReference.Application, new JarFile("D:\\大三上\\自动化测试\\Coder\\JarResource\\ALU.jar"));
-        ArrayList<String> str = new ArrayList<>();
-        ArrayList<String> classesPath = getPath(target,str);
-        assert classesPath != null;
-        for (String path : classesPath) {
+    AnalysisScope scope =
+        AnalysisScopeReader.readJavaScope(
+            "D:\\大三上\\自动化测试\\Coder\\Project\\src\\main\\resources\\scope.txt",
+            new File("exclusion.txt"),
+            null);
+        // 分别将target目录下classes和test-classes中的class文件加入到分析域中
+        ArrayList<String> str1 = new ArrayList<>();
+        getPath(target+"\\classes",str1);
+        for (String path : str1) {
             scope.addClassFileToScope(ClassLoaderReference.Application, new File(path));
         }
-//        System.out.println(scope);
+        ArrayList<String> str2 = new ArrayList<>();
+        getPath(target+"\\test-classes",str2);
+        for (String path : str2) {
+            scope.addClassFileToScope(ClassLoaderReference.Application, new File(path));
+        }
         return scope;
     }
 
+    /**
+     * @description : 获取路径下的所有class文件
+     * @param target : 目标路径
+     * @param results : 结果数据，方便递归
+     * @return ArrayList<String>
+     */
     public static ArrayList<String> getPath(String target,ArrayList<String> results){
         File dir = new File(target);
         if(!dir.exists() || !dir.isDirectory()){
