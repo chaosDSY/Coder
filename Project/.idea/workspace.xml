@@ -20,12 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f622aaa-1ef3-4420-ac83-8dcb6426673d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/TestSelection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Data/ClassicAutomatedTesting/0-CMD/data/class.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/class-cfa.dot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/method-cfa.dot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Data/ClassicAutomatedTesting/0-CMD/data/method-CMD-cfa.dot" beforeDir="false" afterPath="$PROJECT_DIR$/../Data/ClassicAutomatedTesting/0-CMD/data/method-CMD-cfa.dot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Excute/WALA.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Excute/Analysis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Excute/Analysis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TestSelection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TestSelection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/scopeBuild/scopeBuild.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scopeBuild/scopeBuild.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +52,9 @@
     <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1kPxRy6MS4wwpiGL6OnZWsWkPou" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollToSource" value="true" />
     <option name="flattenPackages" value="true" />
@@ -57,6 +62,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -81,7 +87,7 @@
       <recent name="D:\大三上\自动化测试\Coder\Project\src\main\java" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.WALA">
+  <component name="RunManager" selected="Application.Analysis">
     <configuration name="Analysis" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Excute.Analysis" />
       <module name="Coder" />
@@ -110,8 +116,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.WALA" />
         <item itemvalue="Application.Analysis" />
+        <item itemvalue="Application.WALA" />
       </list>
     </recent_temporary>
   </component>
@@ -126,7 +132,7 @@
       <option name="presentableId" value="Default" />
       <updated>1605616023367</updated>
       <workItem from="1605616025667" duration="182000" />
-      <workItem from="1605616225472" duration="4368000" />
+      <workItem from="1605616225472" duration="29297000" />
     </task>
     <servers />
   </component>
@@ -145,34 +151,66 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="0" y="0" key="#Project_Structure" timestamp="1605616867250">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="0" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1605616867250" />
+    <state x="447" y="73" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605681537484">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="447" y="73" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1605681537484" />
     <state x="721" y="163" key="FileChooserDialogImpl" timestamp="1605634118212">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="721" y="163" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605634118212" />
-    <state width="1242" height="125" key="GridCell.Tab.0.bottom" timestamp="1605632114544">
+    <state width="724" height="160" key="GridCell.Tab.0.bottom" timestamp="1605699854842">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1242" height="125" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605632114544" />
-    <state width="1242" height="125" key="GridCell.Tab.0.center" timestamp="1605632114543">
+    <state width="724" height="160" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605699854842" />
+    <state width="724" height="160" key="GridCell.Tab.0.center" timestamp="1605699854842">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1242" height="125" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605632114543" />
-    <state width="1242" height="125" key="GridCell.Tab.0.left" timestamp="1605632114543">
+    <state width="724" height="160" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605699854842" />
+    <state width="724" height="160" key="GridCell.Tab.0.left" timestamp="1605699854842">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1242" height="125" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605632114543" />
-    <state width="1242" height="125" key="GridCell.Tab.0.right" timestamp="1605632114543">
+    <state width="724" height="160" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605699854842" />
+    <state width="724" height="160" key="GridCell.Tab.0.right" timestamp="1605699854842">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1242" height="125" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605632114543" />
+    <state width="724" height="160" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605699854842" />
+    <state width="723" height="293" key="GridCell.Tab.1.bottom" timestamp="1605697018946">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="723" height="293" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605697018946" />
+    <state width="723" height="293" key="GridCell.Tab.1.center" timestamp="1605697018946">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="723" height="293" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1605697018946" />
+    <state width="723" height="293" key="GridCell.Tab.1.left" timestamp="1605697018946">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="723" height="293" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1605697018946" />
+    <state width="723" height="293" key="GridCell.Tab.1.right" timestamp="1605697018946">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="723" height="293" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1605697018946" />
     <state x="0" y="0" key="SettingsEditor" timestamp="1605616434501">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="0" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1605616434501" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1605683880670">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1605683880670" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Coder$Analysis.ic" NAME="Analysis Coverage Results" MODIFIED="1605696785626" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Excute.*</FILTER>
+    </SUITE>
   </component>
 </project>

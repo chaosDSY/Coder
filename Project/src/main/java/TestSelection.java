@@ -3,7 +3,9 @@ import java.util.ArrayList;
 
 public class TestSelection {
     public static void main(String[] args){
-
+        String method = args[0];
+        String project_target = args[1];
+        String change_info = args[2];
     }
 
     /**

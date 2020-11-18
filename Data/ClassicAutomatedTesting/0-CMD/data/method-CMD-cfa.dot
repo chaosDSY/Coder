@@ -1,5 +1,5 @@
 digraph cmd_method {
-	"net.mooctest.CMD.<init>()V" -> "net.mooctest.CMDTest1.test4()V";
+    "net.mooctest.CMD.<init>()V" -> "net.mooctest.CMDTest1.test4()V";
 	"net.mooctest.CMD.<init>()V" -> "net.mooctest.CMDTest.test2()V";
 	"net.mooctest.CMD.<init>()V" -> "net.mooctest.CMDTest3.testnnull()V";
 	"net.mooctest.CMD.<init>()V" -> "net.mooctest.CMDTest.test()V";
