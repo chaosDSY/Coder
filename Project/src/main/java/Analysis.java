@@ -1,5 +1,3 @@
-package Excute;
-
 import com.ibm.wala.classLoader.ShrikeBTMethod;
 import com.ibm.wala.ipa.callgraph.*;
 import com.ibm.wala.ipa.callgraph.cha.CHACallGraph;
@@ -14,7 +12,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Scanner;
 
 public class Analysis {
     /**
@@ -126,8 +123,8 @@ public class Analysis {
             }
         }
         classDot.add("}");
-        writeFile(classDot,"class-cfa.dot");
-        System.out.println("class-cfa.dot build");
+        writeFile(classDot,"class.dot");
+        System.out.println("class.dot build");
         return classRelation;
     }
 
@@ -162,8 +159,8 @@ public class Analysis {
             }
         }
         methodDot.add("}");
-        writeFile(methodDot,"method-cfa.dot");
-        System.out.println("method-cfa.dot build");
+        writeFile(methodDot,"method.dot");
+        System.out.println("method.dot build");
         return methodRelation;
     }
 
@@ -208,6 +205,7 @@ public class Analysis {
      * @param cg : 分析域图
      * @param change_info : 变更记录
      */
+
     public static void ExcuteM(CHACallGraph cg, ArrayList<String> change_info){
         ArrayList<String> selectMethod = new ArrayList<>();
         for(CGNode node:cg){
@@ -216,10 +214,10 @@ public class Analysis {
                 if("Application".equals(method.getDeclaringClass().getClassLoader().toString())){
                     String classInnerName = method.getDeclaringClass().getName().toString();
                     String signature = method.getSignature();
-                    if(signature.contains("Test") && containMethod(cg,node,change_info) && !signature.contains("<init>")){
-                        if(!selectMethod.contains(classInnerName+" "+signature)){
+                    if(signature.contains("Test") && judgeMethod(cg,node,change_info)
+                            && !signature.contains("<init>") && !selectMethod.contains(classInnerName+" "+signature)){
                             selectMethod.add(classInnerName+" "+signature);
-                        }
+
                     }
                 }
             }
@@ -227,20 +225,20 @@ public class Analysis {
         writeFile(selectMethod,"selection-method.txt");
     }
 
-    private static Boolean containMethod(CHACallGraph cg, CGNode node, List<String> changes){
+    private static Boolean judgeMethod(CHACallGraph cg, CGNode node, List<String> changes){
         Iterator<CGNode> succNodes=cg.getSuccNodes(node);
         if(!succNodes.hasNext()) return false;
         Boolean result=false;
         while(succNodes.hasNext()){
-            CGNode x=succNodes.next();
-            if (!"Application".equals(x.getMethod().getDeclaringClass().getClassLoader().toString())) continue;
-            String succSignature = x.getMethod().getSignature();
+            CGNode sub=succNodes.next();
+            if (!"Application".equals(sub.getMethod().getDeclaringClass().getClassLoader().toString())) continue;
+            String succSignature = sub.getMethod().getSignature();
             for(String single:changes){
                 if(single.split(" ")[1].compareTo(succSignature)==0){
                     return true;
                 }
             }
-            result = containMethod(cg,x,changes);
+            result = judgeMethod(cg,sub,changes);
             if(result){
                 break;
             }
@@ -248,18 +246,17 @@ public class Analysis {
         return result;
     }
 
-
     //        指令一： java -jar testSelection.jar -c <project_target> <change_info>，执行类级测试选择；
     //        指令二： java -jar testSelection.jar -m <project_target> <change_info>。执行方法级测试选择；
     public static void main(String[] args) throws WalaException, CancelException, IOException, InvalidClassFileException {
         String[] classes = {"0-CMD","1-ALU","2-DataLog","3-BinaryHeap","4-NextDay","5-MoreTriangle"};
         String project_target =
                 "D:\\大三上\\自动化测试\\大作业\\经典大作业\\ClassicAutomatedTesting\\ClassicAutomatedTesting\\"
-                        +classes[0]+"\\target";
+                        +classes[5]+"\\target";
         String change_info =
                 "D:\\大三上\\自动化测试\\大作业\\经典大作业\\ClassicAutomatedTesting\\ClassicAutomatedTesting\\"
-                        +classes[0]+"\\data\\change_info.txt";
-        AnalysisScope scope = scopeBuild.scopeBuild.buildScope(project_target);
+                        +classes[5]+"\\data\\change_info.txt";
+        AnalysisScope scope = scopeBuild.buildScope(project_target);
         CHACallGraph cg = GraphMake(scope);
         ArrayList<String> classRelation = getClassDot(cg);
         ArrayList<String> methodRelation = getMethodDot(cg);
@@ -268,17 +265,5 @@ public class Analysis {
         ExcuteC(cg,mesg,classRelation);
         ExcuteM(cg,mesg);
         System.out.println("complete");
-//        ArrayList<String> mine = changeInfoRead("D:\\大三上\\自动化测试\\Coder\\Project\\method-cfa.dot");
-//        ArrayList<String> gets = changeInfoRead("D:\\大三上\\自动化测试\\Coder\\Data\\ClassicAutomatedTesting\\0-CMD\\data\\method-CMD-cfa.dot");
-//        for(String str :mine){
-//            if(!gets.contains(str)){
-//                System.out.println(str);
-//            }
-//        }
-//        for(String str :gets){
-//            if (!mine.contains(str)){
-//                System.out.println(str);
-//            }
-//        }
     }
 }

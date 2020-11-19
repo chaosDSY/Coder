@@ -1,5 +1,3 @@
-package scopeBuild;
-
 import com.ibm.wala.ipa.callgraph.AnalysisScope;
 import com.ibm.wala.shrikeCT.InvalidClassFileException;
 import com.ibm.wala.types.ClassLoaderReference;

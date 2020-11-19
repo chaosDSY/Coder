@@ -20,15 +20,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f622aaa-1ef3-4420-ac83-8dcb6426673d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Data/ClassicAutomatedTesting/0-CMD/data/class.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/class-cfa.dot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/method-cfa.dot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Data/ClassicAutomatedTesting/0-CMD/data/method-CMD-cfa.dot" beforeDir="false" afterPath="$PROJECT_DIR$/../Data/ClassicAutomatedTesting/0-CMD/data/method-CMD-cfa.dot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/class-moretriangle.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/class.dot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/method-moretriangle.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/method.dot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Report/1-ALU/class-alu.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Report/1-ALU/method-alu.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Report/2-Datalog/class-datalog.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Report/2-Datalog/method-datalog.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Report/3-BinaryHeap/class-binaryheap.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Report/3-BinaryHeap/method-binaryheap.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Report/4-NextDay/class-nextday.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Report/4-NextDay/method-nextday.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Excute/Analysis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Excute/Analysis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class-cfa.dot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/method-cfa.dot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/selection-class.txt" beforeDir="false" afterPath="$PROJECT_DIR$/selection-class.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/selection-method.txt" beforeDir="false" afterPath="$PROJECT_DIR$/selection-method.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Excute/Analysis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analysis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Excute/Readme.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/TestSelection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TestSelection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scopeBuild/scopeBuild.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scopeBuild/scopeBuild.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/scopeBuild/scopeBuild.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scopeBuild.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,19 +81,23 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../大作业参考/Automatic-testing" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../大作业参考/automation" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\大三上\自动化测试\Coder\Project\src" />
       <recent name="D:\大三上\自动化测试\Coder\Project\src\main\java" />
@@ -89,11 +105,11 @@
   </component>
   <component name="RunManager" selected="Application.Analysis">
     <configuration name="Analysis" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Excute.Analysis" />
+      <option name="MAIN_CLASS_NAME" value="Analysis" />
       <module name="Coder" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Excute.*" />
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -106,7 +122,7 @@
       <module name="Coder" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Excute.*" />
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -132,7 +148,8 @@
       <option name="presentableId" value="Default" />
       <updated>1605616023367</updated>
       <workItem from="1605616025667" duration="182000" />
-      <workItem from="1605616225472" duration="29297000" />
+      <workItem from="1605616225472" duration="39932000" />
+      <workItem from="1605792598321" duration="2422000" />
     </task>
     <servers />
   </component>
@@ -163,26 +180,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="447" y="73" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1605681537484" />
-    <state x="721" y="163" key="FileChooserDialogImpl" timestamp="1605634118212">
+    <state x="553" y="290" width="429" height="248" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1605792430181">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="721" y="163" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605634118212" />
-    <state width="724" height="160" key="GridCell.Tab.0.bottom" timestamp="1605699854842">
+    <state x="553" y="290" width="429" height="248" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1605792430181" />
+    <state x="721" y="163" key="FileChooserDialogImpl" timestamp="1605782557213">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="724" height="160" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605699854842" />
-    <state width="724" height="160" key="GridCell.Tab.0.center" timestamp="1605699854842">
+    <state x="721" y="163" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605782557213" />
+    <state width="1242" height="130" key="GridCell.Tab.0.bottom" timestamp="1605794946176">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="724" height="160" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605699854842" />
-    <state width="724" height="160" key="GridCell.Tab.0.left" timestamp="1605699854842">
+    <state width="1242" height="130" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605794946176" />
+    <state width="1242" height="130" key="GridCell.Tab.0.center" timestamp="1605794946176">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="724" height="160" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605699854842" />
-    <state width="724" height="160" key="GridCell.Tab.0.right" timestamp="1605699854842">
+    <state width="1242" height="130" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605794946176" />
+    <state width="1242" height="130" key="GridCell.Tab.0.left" timestamp="1605794946176">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="724" height="160" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605699854842" />
+    <state width="1242" height="130" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605794946176" />
+    <state width="1242" height="130" key="GridCell.Tab.0.right" timestamp="1605794946176">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1242" height="130" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605794946176" />
     <state width="723" height="293" key="GridCell.Tab.1.bottom" timestamp="1605697018946">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
