@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="TestSelection:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -20,27 +25,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f622aaa-1ef3-4420-ac83-8dcb6426673d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/class-moretriangle.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/class.dot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/method-moretriangle.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/method.dot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Report/1-ALU/class-alu.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Report/1-ALU/method-alu.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Report/2-Datalog/class-datalog.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Report/2-Datalog/method-datalog.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Report/3-BinaryHeap/class-binaryheap.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Report/3-BinaryHeap/method-binaryheap.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Report/4-NextDay/class-nextday.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Report/4-NextDay/method-nextday.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/TestSelection_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class-cfa.dot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/method-cfa.dot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/selection-class.txt" beforeDir="false" afterPath="$PROJECT_DIR$/selection-class.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/selection-method.txt" beforeDir="false" afterPath="$PROJECT_DIR$/selection-method.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Excute/Analysis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analysis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Excute/Readme.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Analysis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analysis.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/TestSelection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TestSelection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scopeBuild/scopeBuild.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scopeBuild.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/wala.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/wala.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +73,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../大作业参考/automation" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -89,7 +81,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
@@ -99,6 +91,7 @@
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\大三上\自动化测试\Coder\Project" />
       <recent name="D:\大三上\自动化测试\Coder\Project\src" />
       <recent name="D:\大三上\自动化测试\Coder\Project\src\main\java" />
     </key>
@@ -149,7 +142,7 @@
       <updated>1605616023367</updated>
       <workItem from="1605616025667" duration="182000" />
       <workItem from="1605616225472" duration="39932000" />
-      <workItem from="1605792598321" duration="2422000" />
+      <workItem from="1605792598321" duration="6276000" />
     </task>
     <servers />
   </component>
@@ -180,30 +173,34 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="447" y="73" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1605681537484" />
+    <state x="432" y="247" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1605798548118">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="432" y="247" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1605798548118" />
     <state x="553" y="290" width="429" height="248" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1605792430181">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="553" y="290" width="429" height="248" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1605792430181" />
-    <state x="721" y="163" key="FileChooserDialogImpl" timestamp="1605782557213">
+    <state x="721" y="163" key="FileChooserDialogImpl" timestamp="1605798553718">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="721" y="163" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605782557213" />
-    <state width="1242" height="130" key="GridCell.Tab.0.bottom" timestamp="1605794946176">
+    <state x="721" y="163" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605798553718" />
+    <state width="1493" height="136" key="GridCell.Tab.0.bottom" timestamp="1605797354530">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1242" height="130" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605794946176" />
-    <state width="1242" height="130" key="GridCell.Tab.0.center" timestamp="1605794946176">
+    <state width="1493" height="136" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605797354530" />
+    <state width="1493" height="136" key="GridCell.Tab.0.center" timestamp="1605797354530">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1242" height="130" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605794946176" />
-    <state width="1242" height="130" key="GridCell.Tab.0.left" timestamp="1605794946176">
+    <state width="1493" height="136" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605797354530" />
+    <state width="1493" height="136" key="GridCell.Tab.0.left" timestamp="1605797354529">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1242" height="130" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605794946176" />
-    <state width="1242" height="130" key="GridCell.Tab.0.right" timestamp="1605794946176">
+    <state width="1493" height="136" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605797354529" />
+    <state width="1493" height="136" key="GridCell.Tab.0.right" timestamp="1605797354530">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1242" height="130" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605794946176" />
+    <state width="1493" height="136" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605797354530" />
     <state width="723" height="293" key="GridCell.Tab.1.bottom" timestamp="1605697018946">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -220,14 +217,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="723" height="293" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1605697018946" />
-    <state x="0" y="0" key="SettingsEditor" timestamp="1605616434501">
+    <state x="468" y="0" key="SettingsEditor" timestamp="1605798729029">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="0" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1605616434501" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1605683880670">
+    <state x="468" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1605798729029" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1605798103116">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1605683880670" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1605798103116" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Coder$Analysis.ic" NAME="Analysis Coverage Results" MODIFIED="1605696785626" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

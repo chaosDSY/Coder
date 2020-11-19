@@ -123,7 +123,7 @@ public class Analysis {
             }
         }
         classDot.add("}");
-        writeFile(classDot,"class.dot");
+//        writeFile(classDot,"class.dot");
         System.out.println("class.dot build");
         return classRelation;
     }
@@ -159,7 +159,7 @@ public class Analysis {
             }
         }
         methodDot.add("}");
-        writeFile(methodDot,"method.dot");
+//        writeFile(methodDot,"method.dot");
         System.out.println("method.dot build");
         return methodRelation;
     }
@@ -171,18 +171,9 @@ public class Analysis {
      * @param classRelation : 类关联
      */
     public static void ExcuteC(CHACallGraph cg, ArrayList<String> change_info,ArrayList<String> classRelation){
+        ArrayList<String> allClass = new ArrayList<>();
         ArrayList<String> selectClass = new ArrayList<>();
         ArrayList<String> changedClass = new ArrayList<>();
-        for(String relation:classRelation){
-            String classInnerName = relation.split(" ")[0];
-            String nextClassInnerName = relation.split(" ")[1];
-            for(String change:change_info){
-                if(classInnerName.compareTo(change.split(" ")[0])==0 &&
-                        nextClassInnerName.contains("Test")){
-                    changedClass.add(nextClassInnerName);
-                }
-            }
-        }
 
         for(CGNode node:cg){
             if (node.getMethod() instanceof ShrikeBTMethod) {
@@ -190,13 +181,29 @@ public class Analysis {
                 if ("Application".equals(method.getDeclaringClass().getClassLoader().toString())) {
                     String classInnerName = method.getDeclaringClass().getName().toString();
                     String signature = method.getSignature();
-                    if(changedClass.contains(classInnerName)&& !signature.contains("<init>")
-                            &&!signature.contains("initialize()") && !selectClass.contains(classInnerName+" "+signature)){
-                        selectClass.add(classInnerName+" "+signature);
+                    if(!signature.contains("<init>") &&!signature.contains("initialize()") && !allClass.contains(classInnerName+" "+signature)){
+                        allClass.add(classInnerName+" "+signature);
                     }
                 }
             }
         }
+
+        for(String relation:classRelation){
+            String classInnerName = relation.split(" ")[0];
+            String nextClassInnerName = relation.split(" ")[1];
+            for(String change:change_info){
+                if(classInnerName.equals(change.split(" ")[0]) && nextClassInnerName.contains("Test")){
+                    changedClass.add(nextClassInnerName);
+                }
+            }
+        }
+
+        for(String clazz : allClass){
+            if(changedClass.contains(clazz.split(" ")[0])){
+                selectClass.add(clazz);
+            }
+        }
+
         writeFile(selectClass,"selection-class.txt");
     }
 
@@ -246,24 +253,22 @@ public class Analysis {
         return result;
     }
 
-    //        指令一： java -jar testSelection.jar -c <project_target> <change_info>，执行类级测试选择；
-    //        指令二： java -jar testSelection.jar -m <project_target> <change_info>。执行方法级测试选择；
     public static void main(String[] args) throws WalaException, CancelException, IOException, InvalidClassFileException {
         String[] classes = {"0-CMD","1-ALU","2-DataLog","3-BinaryHeap","4-NextDay","5-MoreTriangle"};
         String project_target =
                 "D:\\大三上\\自动化测试\\大作业\\经典大作业\\ClassicAutomatedTesting\\ClassicAutomatedTesting\\"
-                        +classes[5]+"\\target";
+                        +classes[0]+"\\target";
         String change_info =
                 "D:\\大三上\\自动化测试\\大作业\\经典大作业\\ClassicAutomatedTesting\\ClassicAutomatedTesting\\"
-                        +classes[5]+"\\data\\change_info.txt";
+                        +classes[0]+"\\data\\change_info.txt";
         AnalysisScope scope = scopeBuild.buildScope(project_target);
         CHACallGraph cg = GraphMake(scope);
         ArrayList<String> classRelation = getClassDot(cg);
-        ArrayList<String> methodRelation = getMethodDot(cg);
+//        ArrayList<String> methodRelation = getMethodDot(cg);
         ArrayList<String> mesg = changeInfoRead(change_info);
         System.out.println("change_info loaded");
         ExcuteC(cg,mesg,classRelation);
-        ExcuteM(cg,mesg);
+//        ExcuteM(cg,mesg);
         System.out.println("complete");
     }
 }

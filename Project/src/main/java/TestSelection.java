@@ -1,11 +1,38 @@
+import com.ibm.wala.ipa.callgraph.AnalysisScope;
+import com.ibm.wala.ipa.callgraph.cha.CHACallGraph;
+import com.ibm.wala.shrikeCT.InvalidClassFileException;
+import com.ibm.wala.util.CancelException;
+import com.ibm.wala.util.WalaException;
+
 import java.io.*;
 import java.util.ArrayList;
 
 public class TestSelection {
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException, InvalidClassFileException, WalaException, CancelException {
         String method = args[0];
+        boolean judge;
+        if(method.equals("-c")){
+            judge = true;
+        }else if(method.equals("-m")){
+            judge = false;
+        }else {
+            System.out.println("Command Error!");
+            return;
+        }
         String project_target = args[1];
         String change_info = args[2];
+        AnalysisScope scope = scopeBuild.buildScope(project_target);
+        CHACallGraph cg = Analysis.GraphMake(scope);
+        ArrayList<String> classRelation = Analysis.getClassDot(cg);
+        ArrayList<String> methodRelation = Analysis.getMethodDot(cg);
+        ArrayList<String> mesg = Analysis.changeInfoRead(change_info);
+        System.out.println("change_info loaded");
+        if(judge){
+            Analysis.ExcuteC(cg,mesg,classRelation);
+        }else {
+            Analysis.ExcuteM(cg,mesg);
+        }
+        System.out.println("complete");
     }
 
     /**
