@@ -229,25 +229,60 @@ public class Analysis {
                 }
             }
         }
+
         writeFile(selectMethod,"selection-method.txt");
     }
 
+    /**
+     * @description : 循环迭代判断方法是否受到影响
+     * @param cg : 图结构
+     * @param node : 节点
+     * @param changes : 变化
+     * @return
+     */
     private static Boolean judgeMethod(CHACallGraph cg, CGNode node, List<String> changes){
-        Iterator<CGNode> succNodes=cg.getSuccNodes(node);
-        if(!succNodes.hasNext()) return false;
-        Boolean result=false;
-        while(succNodes.hasNext()){
-            CGNode sub=succNodes.next();
+//        Iterator<CGNode> succNodes=cg.getSuccNodes(node);
+//        boolean result=false;
+//        while(succNodes.hasNext()){
+//            CGNode sub=succNodes.next();
+//            if (!"Application".equals(sub.getMethod().getDeclaringClass().getClassLoader().toString())) continue;
+//            String succSignature = sub.getMethod().getSignature();
+//            for(String single:changes){
+//                if(single.split(" ")[1].compareTo(succSignature)==0){
+//                    return true;
+//                }
+//            }
+//            result = judgeMethod(cg,sub,changes);
+//            if(result){
+//                break;
+//            }
+//        }
+//        return result;
+        Iterator<CGNode> succNode = cg.getSuccNodes(node);
+        ArrayList<CGNode> nodeStack = new ArrayList<>();
+        int cursor = 1;
+        boolean result=false;
+        CGNode sub;
+        while(true){
+            if(succNode.hasNext()){
+                sub = succNode.next();
+                if(!nodeStack.contains(sub)){
+                    nodeStack.add(sub);
+                }
+            }else if(cursor < nodeStack.size()){
+                sub = nodeStack.get(cursor);
+                cursor++;
+                succNode = cg.getSuccNodes(sub);
+                continue;
+            }else{
+                break;
+            }
             if (!"Application".equals(sub.getMethod().getDeclaringClass().getClassLoader().toString())) continue;
             String succSignature = sub.getMethod().getSignature();
-            for(String single:changes){
-                if(single.split(" ")[1].compareTo(succSignature)==0){
+            for(String change:changes){
+                if(change.split(" ")[1].equals(succSignature)){
                     return true;
                 }
-            }
-            result = judgeMethod(cg,sub,changes);
-            if(result){
-                break;
             }
         }
         return result;
@@ -257,10 +292,10 @@ public class Analysis {
         String[] classes = {"0-CMD","1-ALU","2-DataLog","3-BinaryHeap","4-NextDay","5-MoreTriangle"};
         String project_target =
                 "D:\\大三上\\自动化测试\\大作业\\经典大作业\\ClassicAutomatedTesting\\ClassicAutomatedTesting\\"
-                        +classes[0]+"\\target";
+                        +classes[3]+"\\target";
         String change_info =
                 "D:\\大三上\\自动化测试\\大作业\\经典大作业\\ClassicAutomatedTesting\\ClassicAutomatedTesting\\"
-                        +classes[0]+"\\data\\change_info.txt";
+                        +classes[3]+"\\data\\change_info.txt";
         AnalysisScope scope = scopeBuild.buildScope(project_target);
         CHACallGraph cg = GraphMake(scope);
         ArrayList<String> classRelation = getClassDot(cg);
@@ -268,7 +303,7 @@ public class Analysis {
         ArrayList<String> mesg = changeInfoRead(change_info);
         System.out.println("change_info loaded");
         ExcuteC(cg,mesg,classRelation);
-//        ExcuteM(cg,mesg);
+        ExcuteM(cg,mesg);
         System.out.println("complete");
     }
 }
