@@ -8,35 +8,44 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class TestSelection {
-    public static void main(String[] args) throws IOException, InvalidClassFileException, WalaException, CancelException {
-        init();
-        System.out.println("local file init");
-        String method = args[0];
-        boolean judge;
-        if(method.equals("-c")){
-            judge = true;
-        }else if(method.equals("-m")){
-            judge = false;
-        }else {
-            System.out.println("Command Error!");
-            return;
+    /**
+     * @description : 项目入口
+     * @param args : 函数输入
+     * 通过try-catch简单处理异常
+     */
+    public static void main(String[] args){
+        try{
+            init();
+            System.out.println("local file init");
+            String method = args[0];
+            boolean judge;
+            if(method.equals("-c")){
+                judge = true;
+            }else if(method.equals("-m")){
+                judge = false;
+            }else {
+                System.out.println("Command Error!");
+                return;
+            }
+            String project_target = args[1];
+            String change_info = args[2];
+            String scopePath = getLocalJarPath()+"\\scope.txt";
+            String exclusionPath = getLocalJarPath()+"\\exclusion.txt";
+            AnalysisScope scope = scopeBuild.buildScope(project_target,scopePath,exclusionPath);
+            CHACallGraph cg = Analysis.GraphMake(scope);
+            ArrayList<String> classRelation = Analysis.getClassDot(cg);
+            ArrayList<String> methodRelation = Analysis.getMethodDot(cg);
+            ArrayList<String> mesg = Analysis.changeInfoRead(change_info);
+            System.out.println("change_info loaded");
+            if(judge){
+                Analysis.ExcuteC(cg,mesg,classRelation);
+            }else {
+                Analysis.ExcuteM(cg,mesg);
+            }
+            System.out.println("complete");
+        }catch (IOException | InvalidClassFileException | WalaException | CancelException e){
+            e.printStackTrace();
         }
-        String project_target = args[1];
-        String change_info = args[2];
-        String scopePath = getLocalJarPath()+"\\scope.txt";
-        String exclusionPath = getLocalJarPath()+"\\exclusion.txt";
-        AnalysisScope scope = scopeBuild.buildScope(project_target,scopePath,exclusionPath);
-        CHACallGraph cg = Analysis.GraphMake(scope);
-        ArrayList<String> classRelation = Analysis.getClassDot(cg);
-        ArrayList<String> methodRelation = Analysis.getMethodDot(cg);
-        ArrayList<String> mesg = Analysis.changeInfoRead(change_info);
-        System.out.println("change_info loaded");
-        if(judge){
-            Analysis.ExcuteC(cg,mesg,classRelation);
-        }else {
-            Analysis.ExcuteM(cg,mesg);
-        }
-        System.out.println("complete");
     }
 
     /**

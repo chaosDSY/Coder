@@ -52,7 +52,7 @@ public class Analysis {
 
     /**
      *
-     * @description : 输出txt文件
+     * @description : 将输出信息输出到指定文件路径
      * @param message : 输出信息
      * @param outPutPath : 输出路径
      * @return ArrayList<String>
@@ -74,24 +74,6 @@ public class Analysis {
     }
 
     /**
-     * @description : 获取本地Jar包路径
-     */
-    public static String getLocalJarPath(){
-        String path = Analysis.class.getProtectionDomain().getCodeSource().getLocation().getFile();
-        try
-        {
-            path = java.net.URLDecoder.decode(path, "UTF-8"); // 处理中文
-            File file = new File(path);
-            return file.getParent();
-        }
-        catch (java.io.UnsupportedEncodingException e)
-        {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    /**
      * @description : 获取类图
      * @param cg : 图像
      * @return void 返回值为空 输出到class-cfa.dot
@@ -106,16 +88,15 @@ public class Analysis {
                 if ("Application".equals(method.getDeclaringClass().getClassLoader().toString())) {
                     String classInnerName = method.getDeclaringClass().getName().toString();
                     String signature = method.getSignature();
-                    if(!signature.contains("Test") && !signature.contains("$")){
-                        Iterator<CGNode> predNodes= cg.getPredNodes(node);
-                        while(predNodes.hasNext()){
-                            CGNode nextNode = predNodes.next();
-                            if("Application".equals(nextNode.getMethod().getDeclaringClass().getClassLoader().toString())) {
-                                String nextClassInnerName=nextNode.getMethod().getDeclaringClass().getName().toString();
-                                if(!classDot.contains("\t\""+classInnerName+"\" -> \""+nextClassInnerName+"\";")){
-                                    classDot.add("\t\""+classInnerName+"\" -> \""+nextClassInnerName+"\";");
-                                    classRelation.add(classInnerName+" "+nextClassInnerName);
-                                }
+                    if(signature.contains("Test") || signature.contains("$")) continue;
+                    Iterator<CGNode> predNodes= cg.getPredNodes(node);
+                    while(predNodes.hasNext()){
+                        CGNode nextNode = predNodes.next();
+                        if("Application".equals(nextNode.getMethod().getDeclaringClass().getClassLoader().toString())) {
+                            String nextClassInnerName=nextNode.getMethod().getDeclaringClass().getName().toString();
+                            if(!classDot.contains("\t\""+classInnerName+"\" -> \""+nextClassInnerName+"\";")){
+                                classDot.add("\t\""+classInnerName+"\" -> \""+nextClassInnerName+"\";");
+                                classRelation.add(classInnerName+" "+nextClassInnerName);
                             }
                         }
                     }
