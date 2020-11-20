@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 public class TestSelection {
     public static void main(String[] args) throws IOException, InvalidClassFileException, WalaException, CancelException {
+        init();
+        System.out.println("local file init");
         String method = args[0];
         boolean judge;
         if(method.equals("-c")){
@@ -21,7 +23,9 @@ public class TestSelection {
         }
         String project_target = args[1];
         String change_info = args[2];
-        AnalysisScope scope = scopeBuild.buildScope(project_target);
+        String scopePath = getLocalJarPath()+"\\scope.txt";
+        String exclusionPath = getLocalJarPath()+"\\exclusion.txt";
+        AnalysisScope scope = scopeBuild.buildScope(project_target,scopePath,exclusionPath);
         CHACallGraph cg = Analysis.GraphMake(scope);
         ArrayList<String> classRelation = Analysis.getClassDot(cg);
         ArrayList<String> methodRelation = Analysis.getMethodDot(cg);

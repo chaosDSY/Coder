@@ -14,7 +14,9 @@ public class scopeBuild {
     public static void main(String[] args) throws IOException, InvalidClassFileException {
     AnalysisScope scope =
         buildScope(
-            "D:\\大三上\\自动化测试\\大作业\\经典大作业\\ClassicAutomatedTesting\\ClassicAutomatedTesting\\1-ALU\\target");
+            "D:\\大三上\\自动化测试\\大作业\\经典大作业\\ClassicAutomatedTesting\\ClassicAutomatedTesting\\1-ALU\\target",
+                "D:\\大三上\\自动化测试\\Coder\\Project\\src\\main\\resources\\scope.txt",
+                "exclusion.txt");
     }
 
     /**
@@ -25,12 +27,8 @@ public class scopeBuild {
      * @throws IOException
      * @throws InvalidClassFileException
      */
-    public static AnalysisScope buildScope(String target) throws IOException, InvalidClassFileException {
-    AnalysisScope scope =
-        AnalysisScopeReader.readJavaScope(
-            "D:\\大三上\\自动化测试\\Coder\\Project\\src\\main\\resources\\scope.txt",
-            new File("exclusion.txt"),
-            null);
+    public static AnalysisScope buildScope(String target,String scopePath,String exclusionPath) throws IOException, InvalidClassFileException {
+        AnalysisScope scope = AnalysisScopeReader.readJavaScope(scopePath, new File(exclusionPath), ClassLoader.getSystemClassLoader());
         // 分别将target目录下classes和test-classes中的class文件加入到分析域中
         ArrayList<String> str1 = new ArrayList<>();
         getPath(target+"\\classes",str1);

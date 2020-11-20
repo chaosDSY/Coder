@@ -241,35 +241,22 @@ public class Analysis {
      * @return
      */
     private static Boolean judgeMethod(CHACallGraph cg, CGNode node, List<String> changes){
-//        Iterator<CGNode> succNodes=cg.getSuccNodes(node);
-//        boolean result=false;
-//        while(succNodes.hasNext()){
-//            CGNode sub=succNodes.next();
-//            if (!"Application".equals(sub.getMethod().getDeclaringClass().getClassLoader().toString())) continue;
-//            String succSignature = sub.getMethod().getSignature();
-//            for(String single:changes){
-//                if(single.split(" ")[1].compareTo(succSignature)==0){
-//                    return true;
-//                }
-//            }
-//            result = judgeMethod(cg,sub,changes);
-//            if(result){
-//                break;
-//            }
-//        }
-//        return result;
         Iterator<CGNode> succNode = cg.getSuccNodes(node);
         ArrayList<CGNode> nodeStack = new ArrayList<>();
+        nodeStack.add(node);
         int cursor = 1;
-        boolean result=false;
+        boolean result = false;
         CGNode sub;
-        while(true){
+        while (true){
             if(succNode.hasNext()){
                 sub = succNode.next();
+                if (!"Application".equals(sub.getMethod().getDeclaringClass().getClassLoader().toString())) continue;
                 if(!nodeStack.contains(sub)){
-                    nodeStack.add(sub);
+                   nodeStack.add(sub);
+                }else {
+                    continue;
                 }
-            }else if(cursor < nodeStack.size()){
+            }else if(cursor<nodeStack.size()){
                 sub = nodeStack.get(cursor);
                 cursor++;
                 succNode = cg.getSuccNodes(sub);
@@ -277,7 +264,6 @@ public class Analysis {
             }else{
                 break;
             }
-            if (!"Application".equals(sub.getMethod().getDeclaringClass().getClassLoader().toString())) continue;
             String succSignature = sub.getMethod().getSignature();
             for(String change:changes){
                 if(change.split(" ")[1].equals(succSignature)){
@@ -292,14 +278,16 @@ public class Analysis {
         String[] classes = {"0-CMD","1-ALU","2-DataLog","3-BinaryHeap","4-NextDay","5-MoreTriangle"};
         String project_target =
                 "D:\\大三上\\自动化测试\\大作业\\经典大作业\\ClassicAutomatedTesting\\ClassicAutomatedTesting\\"
-                        +classes[3]+"\\target";
+                        +classes[5]+"\\target";
         String change_info =
                 "D:\\大三上\\自动化测试\\大作业\\经典大作业\\ClassicAutomatedTesting\\ClassicAutomatedTesting\\"
-                        +classes[3]+"\\data\\change_info.txt";
-        AnalysisScope scope = scopeBuild.buildScope(project_target);
+                        +classes[5]+"\\data\\change_info.txt";
+        AnalysisScope scope = scopeBuild.buildScope(project_target,
+                "D:\\大三上\\自动化测试\\Coder\\Project\\src\\main\\resources\\scope.txt",
+                "exclusion.txt");
         CHACallGraph cg = GraphMake(scope);
         ArrayList<String> classRelation = getClassDot(cg);
-//        ArrayList<String> methodRelation = getMethodDot(cg);
+        ArrayList<String> methodRelation = getMethodDot(cg);
         ArrayList<String> mesg = changeInfoRead(change_info);
         System.out.println("change_info loaded");
         ExcuteC(cg,mesg,classRelation);
